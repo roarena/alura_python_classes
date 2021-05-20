@@ -2,21 +2,29 @@ print("****************************")
 print("Welcome to the guessing game")
 print("****************************")
 
-secret_number = 666
+secret_number = 13
+round_total = 3
 
-user_input = int(input("Enter a number: "))
+for current_round in range(1, round_total +1):
+    print(f"Round {current_round} of {round_total}")
+    user_input = int(input("Enter a number between 1 and 100: "))
 
-correct_guess = user_input == secret_number
-higher_guess = user_input > secret_number
-lower_guess = user_input < secret_number
+    if(user_input < 1 or user_input > 100):
+        print("You should enter a number between 1 and 100.")
+        continue
 
-if(correct_guess):
-    print("Congratulations! You guessed correctly.")
-else:
-    if(higher_guess):
-        print("Ooops! You guessed a higher number then the secret one.")
+    correct_guess = user_input == secret_number
+    higher_guess = user_input > secret_number
+    lower_guess = user_input < secret_number
+
+    if(correct_guess):
+        print("Congratulations! You guessed correctly.")
+        break
     else:
-        print("Ooops! You guessed a lower number then the secret one.")
+        if(higher_guess):
+            print("Ooops! You guessed a higher number then the secret one.")
+        else:
+            print("Ooops! You guessed a lower number then the secret one.")
 
 print("The end")
 
